@@ -190,8 +190,8 @@ students3 = read.csv(file.choose()) # here when we ctrl plus enter a pop up appe
 library(dplyr)
 head(students)
 students[students$marks1>60, ]
-students[students$gender=='F', ]# when we r checking equality double equality
-students[students$gender=='F'| students$college=='SRCC', ] # use pipe for or
+students[students$gender=='F', ]# when we r checking equality double equality bcz simple= means we r assigning the value of any variable as the given value like x=3 while == means value stored in that column is checked of equality
+students[students$gender=='F'| students$college=='SRCC', ] # use pipe for or ....if you have written & instead of | then female of srcc only given
 
 #highest from al colleges
 
@@ -199,3 +199,31 @@ students %>% filter(gender=='M') #%>% is pipe operator means send data from one 
 students %>% group_by(gender)%>% summarise(mean(marks1),mean(marks2)) 
 students %>% group_by(college) %>% summarise(max(marks1),max(marks2))
 students %>% filter(college =='FMS') %>% select(marks1, marks2)
+
+
+library() #to run a installed package this need to be specifically written
+?paste
+(nth <- paste(1:12, c("st", "nd", "rd", rep("th", 9))))
+?set.seed
+?count
+students%>% tally()
+
+students%>% group_by(gender,college) %>% summarise(countTotal=n(), mean(marks1, max(marks2)))
+students %>% mutate(totalMarks= marks1+marks2) #mutate helps to get another column 
+students %>% mutate(totalMarks= marks1+ 1.2*marks2) # we increased the marks 2 with 20%
+students %>% mutate(totalMarks= marks1+ 1.2*marks2) %>% arrange(-totalMarks) # to arrange in decreasing order add minus sign
+students %>% mutate(totalMarks= marks1+ 1.2*marks2) %>% arrange(-totalMarks) %>% head(n=2)
+students %>%head(n=2)%>% mutate(totalMarks= marks1+ 1.2*marks2) %>% arrange(-totalMarks)
+students %>% slice(seq(1,30,2)) #every alternate row
+students %>% sample_n(5) #random 5 rows
+students%>% sample_frac(.2)# random 20%
+?max
+students %>% mutate(totalMarks= marks1+marks2)%>% max(totalMarks)
+students %>% mutate(totalMarks= marks1+marks2)%>% filter(totalMarks==max(totalMarks))
+?filter
+students %>% mutate(totalMarks= marks1+ 1.2*marks2) %>% arrange(-totalMarks) %>% top_n(3,totalMarks)
+?top_n
+top_n(students,3,marks1)
+library(rJava)
+library(xlsx)
+
