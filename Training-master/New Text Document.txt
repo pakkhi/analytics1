@@ -1,0 +1,6 @@
+twitter analysis
+first is to find the words having meaning removing unnecessary blank spaces
+
+matrix have only one type of value - characters or numerics
+dataframes can have multiple types of value
+list multiple vectors 

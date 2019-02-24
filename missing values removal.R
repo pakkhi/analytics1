@@ -95,7 +95,7 @@ sapply(knnOutput,function(x) sum(is.na(x)))
 5. **MICE**
   
   MICE or multivariate Imputation by Chained equations is one step ahead with missing value treatment. It uses the mice() function to produce multiple copies of the dataframe, each with different imputations of the data. The complete() function returns the imputed data and we can select one of them as the complete data.
-
+multiple copies our data
 ```{r}
 # takes time to run
 mice1 <- mice(titanic[, !names(titanic) %in% "survived"], method="rf")  # perform mice imputation, based on random forests(rf).
